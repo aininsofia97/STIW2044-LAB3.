@@ -6,19 +6,14 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyMap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Books',
-      theme: new ThemeData(
-        fontFamily: 'Raleway',
-      ),
       home: Scaffold(
         appBar: AppBar(
-            title: Text('Google Map'),
-            backgroundColor: Colors.green[700],
+            title: Text('Google Map Screen'),
+            backgroundColor: Colors.blue[700],
             actions: <Widget>[]),
         body: Container(
           child: MainScreen(),
@@ -28,12 +23,12 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MainScreen extends StatefulWidget {
+class GoogleMapScreen extends StatefulWidget {
   @override
-  _MainScreenState createState() => _MainScreenState();
+  _GoogleMapState createState() => _GoogleMapState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _GoogleMapState extends State<GoogleMapScreen> {
   String _homeloc = "searching...";
   Position _currentPosition;
   String gmaploc = "";
@@ -108,7 +103,7 @@ class _MainScreenState extends State<MainScreen> {
                         FloatingActionButton(
                           onPressed: _onMapTypeButtonPressed,
                           materialTapTargetSize: MaterialTapTargetSize.padded,
-                          backgroundColor: Colors.green,
+                          backgroundColor: Colors.blue,
                           child: const Icon(Icons.map, size: 36.0),
                         ),
                         Center(
@@ -118,23 +113,23 @@ class _MainScreenState extends State<MainScreen> {
                               Align(
                                   alignment: Alignment.center,
                                   child: Text(
+                                    'Latest Address: ' + _homeloc.toString(),
+                                    style: TextStyle(
+                                        color: Colors.black, fontSize: 16),
+                                  )),
+                              Align(
+                                  alignment: Alignment.center,
+                                  child: Text(
                                     'Latitude: ' + latitude.toString(),
                                     style: TextStyle(
-                                        color: Colors.black, fontSize: 18),
+                                        color: Colors.black, fontSize: 16),
                                   )),
                               Align(
                                   alignment: Alignment.center,
                                   child: Text(
                                     'Longitude: ' + longitude.toString(),
                                     style: TextStyle(
-                                        color: Colors.black, fontSize: 18),
-                                  )),
-                              Align(
-                                  alignment: Alignment.center,
-                                  child: Text(
-                                    'Latest Address: ' + _homeloc.toString(),
-                                    style: TextStyle(
-                                        color: Colors.black, fontSize: 18),
+                                        color: Colors.black, fontSize: 16),
                                   )),
                             ],
                           ),
